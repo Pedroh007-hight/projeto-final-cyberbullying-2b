@@ -1,0 +1,28 @@
+import { StyleSheet, Text, View } from "react-native";
+
+export default function Page() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.main}>
+        <Text style={styles.title}>Cuidados e Prevenções</Text>
+        <Text style={styles.subtitle}></Text>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+      fontSize: 24,
+  },
+  subtitle: {
+    fontSize: 18,
+    color: 'white',
+  },
+});
