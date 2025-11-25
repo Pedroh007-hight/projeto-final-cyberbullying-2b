@@ -1,70 +1,104 @@
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function Page() {
   return (
+    // CONTAINER: Fundo gradiente sutil
     <View style={styles.container}>
+      
+      {/* MAIN: Card de conteúdo centralizado */}
       <View style={styles.main}>
-        <Text style={styles.title}>Cyber Bullying</Text>
-        <Text style={styles.subtitle}>Bem-vindo ao Aplicativo</Text>
+        
+        {/* Título Principal com Ícone/Emoji */}
+        <Text style={styles.title}>
+          🛡️ Cyber Bullying
+        </Text>
+        
+        {/* Subtítulo de Boas-vindas */}
+        <Text style={styles.subtitle}>
+          Bem-vindo ao Aplicativo
+        </Text>
+        
+        {/* Descrição do Aplicativo */}
         <Text style={styles.description}>
           Este aplicativo foi criado para ajudar a combater o cyber bullying, fornecendo recursos e
-          informações sobre como lidar com essa questão.
+          informações sobre como lidar com essa questão, promovendo um ambiente digital mais seguro.
         </Text>
-        <Text style={styles.credit}>Desenvolvido por Pedro Henrique</Text>
+        
+        {/* Crédito do Desenvolvedor (Estilizado de forma discreta) */}
+        <View style={styles.creditContainer}>
+          <Text style={styles.creditText}>
+            Desenvolvido por **Pedro Henrique**
+          </Text>
+        </View>
+
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  // --- CONTAINER PRINCIPAL ---
   container: {
     flex: 1,
-    backgroundColor: '#F4F7FC',  // Fundo mais suave e sofisticado
-    justifyContent: 'center',     // Centraliza o conteúdo
-    alignItems: 'center',         // Alinha os itens no centro
-    paddingHorizontal: 20,
+    // Fundo azul muito suave (quase branco)
+    backgroundColor: '#E8EEF4', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   },
+  
+  // --- CARD PRINCIPAL (MAIN) ---
   main: {
+    backgroundColor: '#FFFFFF', // Card branco
+    borderRadius: 15, // Bordas arredondadas
+    padding: 30,
+    marginHorizontal: 25,
+    maxWidth: 450, 
+    // Sombra proeminente para efeito flutuante
+    shadowColor: '#1A2940',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.15,
+    shadowRadius: 20,
+    elevation: 10, 
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 20,  // Lateral para espaçamento
-    maxWidth: 400,          // Limita a largura para evitar que o texto se estique demais
-    shadowColor: '#000',    // Sombra do container principal
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,           // Sombra suave (Android)
+    width: '100%',
   },
+  
+  // --- TIPOGRAFIA ---
   title: {
-    fontSize: 42,           // Tamanho maior para dar mais impacto
-    fontWeight: '700',      // Peso extra para mais destaque
-    color: '#1A2D4B',       // Azul mais escuro, sofisticado
-    marginBottom: 15,       // Espaço abaixo do título
-    textAlign: 'center',    // Garantir que o título fique centralizado
-    fontFamily: 'serif',    // Fonte serifada para um toque de sofisticação
+    fontSize: 34, 
+    fontWeight: '800', 
+    color: '#3452D3', // Cor de destaque (Azul Primário)
+    marginBottom: 10, 
+    textAlign: 'center', 
   },
   subtitle: {
-    fontSize: 20,
-    color: '#6D7B8D',       // Cor mais neutra e suave
-    fontFamily: 'sans-serif', // Fonte sem serifa para contraste
+    fontSize: 18,
+    color: '#65748F', 
     textAlign: 'center',
-    marginBottom: 25,       // Maior espaçamento abaixo do subtítulo
+    marginBottom: 30, 
+    fontWeight: '400',
   },
   description: {
     fontSize: 16,
-    color: '#6D7B8D',       // Cor de texto suave
+    color: '#4B5C75', 
     textAlign: 'center',
-    paddingHorizontal: 20,  // Adiciona um pouco de espaçamento lateral
-    marginBottom: 30,       // Espaçamento antes do crédito
-    lineHeight: 24,         // Aumenta a altura da linha para melhorar a leitura
-    fontFamily: 'serif',    // Fonte serifada para elegância
+    marginBottom: 40, 
+    lineHeight: 24, 
+    paddingHorizontal: 10, // Diminui o texto das bordas
   },
-  credit: {
-    fontSize: 18,
-    color: '#1A2D4B',       // Mesmo tom de azul escuro para manter a harmonia
-    fontWeight: '600',      // Peso de fonte mais leve para o crédito
-    marginTop: 20,          // Espaçamento entre o conteúdo e o crédito
-    textAlign: 'center',
-    fontFamily: 'sans-serif', // Fonte sem serifa para o crédito
+  
+  // --- CRÉDITO ---
+  creditContainer: {
+    paddingTop: 15,
+    borderTopWidth: 1,
+    borderTopColor: '#F0F4F8', // Linha divisória sutil
+    width: '100%',
+    alignItems: 'center',
+  },
+  creditText: {
+    fontSize: 14,
+    color: '#65748F', 
+    fontWeight: '300', 
   },
 });
