@@ -1,70 +1,127 @@
-import { StyleSheet, Text, View } from "react-native";
+import React from 'react';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions } from "react-native";
+
+const { width } = Dimensions.get('window');
+const scale = size => Math.round(width / 414 * size);
 
 export default function Page() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Cyber Bullying</Text>
-        <Text style={styles.subtitle}>Bem-vindo ao Aplicativo</Text>
-        <Text style={styles.description}>
-          Este aplicativo foi criado para ajudar a combater o cyber bullying, fornecendo recursos e
-          informações sobre como lidar com essa questão.
-        </Text>
-        <Text style={styles.credit}>Desenvolvido por Pedro Henrique</Text>
-      </View>
-    </View>
-  );
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.main}>
+        
+        <Text style={styles.heroIcon}>🛡️</Text>
+
+        {/* Título Principal (Revisado) */}
+        <Text style={styles.title}>Guia de Proteção contra Cyberbullying</Text>
+
+        {/* Subtítulo (Revisado) */}
+        <Text style={styles.subtitle}>
+ Bem-vindo ao seu recurso essencial de segurança digital.
+        </Text>
+
+        {/* Descrição */}
+        <View style={styles.descriptionCard}>
+          <Text style={styles.description}>
+  Este aplicativo foi criado para ajudar a combater o cyberbullying, fornecendo recursos e informações sobre como lidar com essa questão de forma segura e eficaz.
+          </Text>
+        </View>
+
+        {/* Chamada para Ação (CTA) */}
+        <TouchableOpacity style={styles.ctaButton}>
+          <Text style={styles.ctaButtonText}>Começar e Ver Dicas</Text>
+        </TouchableOpacity>
+
+        {/* Crédito */}
+        <Text style={styles.credit}>Desenvolvido por Pedro Henrique</Text>
+      </View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F4F7FC',  // Fundo mais suave e sofisticado
-    justifyContent: 'center',     // Centraliza o conteúdo
-    alignItems: 'center',         // Alinha os itens no centro
-    paddingHorizontal: 20,
-  },
-  main: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 20,  // Lateral para espaçamento
-    maxWidth: 400,          // Limita a largura para evitar que o texto se estique demais
-    shadowColor: '#000',    // Sombra do container principal
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,           // Sombra suave (Android)
-  },
-  title: {
-    fontSize: 42,           // Tamanho maior para dar mais impacto
-    fontWeight: '700',      // Peso extra para mais destaque
-    color: '#1A2D4B',       // Azul mais escuro, sofisticado
-    marginBottom: 15,       // Espaço abaixo do título
-    textAlign: 'center',    // Garantir que o título fique centralizado
-    fontFamily: 'serif',    // Fonte serifada para um toque de sofisticação
-  },
-  subtitle: {
-    fontSize: 20,
-    color: '#6D7B8D',       // Cor mais neutra e suave
-    fontFamily: 'sans-serif', // Fonte sem serifa para contraste
-    textAlign: 'center',
-    marginBottom: 25,       // Maior espaçamento abaixo do subtítulo
-  },
-  description: {
-    fontSize: 16,
-    color: '#6D7B8D',       // Cor de texto suave
-    textAlign: 'center',
-    paddingHorizontal: 20,  // Adiciona um pouco de espaçamento lateral
-    marginBottom: 30,       // Espaçamento antes do crédito
-    lineHeight: 24,         // Aumenta a altura da linha para melhorar a leitura
-    fontFamily: 'serif',    // Fonte serifada para elegância
-  },
-  credit: {
-    fontSize: 18,
-    color: '#1A2D4B',       // Mesmo tom de azul escuro para manter a harmonia
-    fontWeight: '600',      // Peso de fonte mais leve para o crédito
-    marginTop: 20,          // Espaçamento entre o conteúdo e o crédito
-    textAlign: 'center',
-    fontFamily: 'sans-serif', // Fonte sem serifa para o crédito
-  },
+  // CONTAINER PRINCIPAL
+  container: {
+    flexGrow: 1,
+    backgroundColor: '#E8EEF4', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    paddingVertical: scale(40),
+  },
+  main: {
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: 500,
+    paddingHorizontal: '5%',
+  },
+  // ÍCONE HERO
+  heroIcon: {
+    fontSize: scale(100), 
+    marginBottom: scale(20),
+    textShadowColor: 'rgba(52, 82, 211, 0.2)', 
+    textShadowOffset: { width: 0, height: scale(4) },
+    textShadowRadius: scale(8),
+  },
+  // TÍTULOS
+  title: {
+    fontSize: scale(32),
+    fontWeight: '800', 
+    color: '#1A2940', 
+    marginBottom: scale(15),
+    textAlign: 'center', // Garante alinhamento
+    width: '100%', // Adiciona 100% de largura para garantir o centro perfeito
+  },
+  subtitle: {
+    fontSize: scale(20),
+    color: '#65748F', 
+    textAlign: 'center', // Garante alinhamento
+    width: '100%', // Adiciona 100% de largura para garantir o centro perfeito
+    marginBottom: scale(25), 
+  },
+  // CARTÃO DE DESCRIÇÃO
+  descriptionCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: scale(15), 
+    padding: scale(15),
+    marginBottom: scale(35),
+    width: '100%',
+    elevation: 5, 
+    shadowColor: '#1A2940',
+    shadowOffset: { width: 0, height: scale(4) },
+    shadowOpacity: 0.08, 
+    shadowRadius: scale(10),
+  },
+  description: {
+    fontSize: scale(17), 
+    color: '#4B5C75', 
+    textAlign: 'center', 
+    lineHeight: scale(26), 
+  },
+  // BOTÃO CTA
+  ctaButton: {
+    backgroundColor: '#3452D3', 
+    paddingVertical: scale(18),
+    paddingHorizontal: scale(40),
+    borderRadius: scale(10), 
+    width: '90%', 
+    shadowColor: '#3452D3',
+    shadowOffset: { width: 0, height: scale(4) },
+    shadowOpacity: 0.5,
+    shadowRadius: scale(8),
+    elevation: 8,
+  },
+  ctaButtonText: {
+    color: 'white',
+    fontSize: scale(19), 
+    fontWeight: '700',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  // CRÉDITO
+  credit: {
+    fontSize: scale(15), 
+    color: '#65748F',
+    marginTop: scale(40), 
+    textAlign: 'center', 
+    opacity: 0.7,
+  },
 });
