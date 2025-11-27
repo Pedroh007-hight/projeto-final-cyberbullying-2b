@@ -20,7 +20,7 @@ const Topic = ({ title, subtitle, description, expandedDescription, emoji }) => 
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-      
+     
       <View style={styles.descriptionSection}>
         <Text style={styles.description}>
           {description}
@@ -50,7 +50,7 @@ export default function Page() {
       </View>
 
       <View style={styles.main}>
-        
+       
         <Topic
           title="O Que é Cyberbullying?"
           subtitle="Identifique as formas de assédio online."
@@ -95,8 +95,8 @@ export default function Page() {
 const styles = StyleSheet.create({
   // CONTAINER PRINCIPAL (Fundo)
   container: {
-    flexGrow: 1, 
-    backgroundColor: '#E8EEF4', 
+    flexGrow: 1,
+    backgroundColor: '#E8EEF4',
   },
   // BANNER HEADER (Substituindo a imagem de banner)
   bannerHeader: {
@@ -121,11 +121,11 @@ const styles = StyleSheet.create({
   // CONTEÚDO PRINCIPAL
   main: {
     paddingHorizontal: 20,
-    paddingTop: 10, 
+    paddingTop: 10,
     paddingBottom: 40,
-    maxWidth: 600, 
+    maxWidth: 600,
     width: '100%',
-    alignSelf: 'center', 
+    alignSelf: 'center',
   },
   // TÓPICO - ELEMENTO DE SUBSTITUIÇÃO
   topicEmoji: {
@@ -135,29 +135,29 @@ const styles = StyleSheet.create({
   // ESTILOS DO CARD DO TÓPICO
   topicContainer: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 15, 
+    borderRadius: 15,
     padding: 20,
     marginBottom: 20,
-    elevation: 5, 
+    elevation: 5,
     shadowColor: '#1A2940',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08, 
+    shadowOpacity: 0.08,
     shadowRadius: 10,
   },
   headerContent: {
     flexDirection: 'row',
-    alignItems: 'flex-start', 
+    alignItems: 'flex-start',
     marginBottom: 10,
   },
   textHeader: {
-    flex: 1, 
+    flex: 1,
   },
   title: {
-    fontSize: 22, 
+    fontSize: 22,
     fontWeight: '700',
     color: '#1A2940',
     marginBottom: 4,
-    textAlign: 'left', 
+    textAlign: 'left',
   },
   subtitle: {
     fontSize: 15,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   descriptionSection: {
-    paddingLeft: 5, 
+    paddingLeft: 5,
     paddingBottom: 15,
   },
   description: {
@@ -178,11 +178,11 @@ const styles = StyleSheet.create({
   // ESTILOS DO BOTÃO
   toggleButton: {
     marginTop: 10,
-    alignSelf: 'flex-start', 
-    backgroundColor: '#3452D3', 
+    alignSelf: 'flex-start',
+    backgroundColor: '#3452D3',
     paddingVertical: 10,
     paddingHorizontal: 25,
-    borderRadius: 8, 
+    borderRadius: 8,
     shadowColor: '#3452D3',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
@@ -192,6 +192,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: '600',
-    textTransform: 'uppercase', 
+    textTransform: 'uppercase',
   },
 });
