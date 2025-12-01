@@ -1,9 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, Dimensions } from 'react-native';
-import {Pedrojpeg} from "../assets/Pedro.jpeg";
-// Pega a largura da tela para ajustes proporcionais
+import { StyleSheet, Text, View, ScrollView, Image, Dimensions, Platform } from 'react-native';
+import img from "../assets/Pedro.jpeg"
+
+// 1. Definições de Largura Base
+const MOBILE_BASE_WIDTH = 414;
+// Aumentamos o WEB_BASE_WIDTH para reduzir o fator de escala (tirar o "zoom") em telas grandes.
+const WEB_BASE_WIDTH = 1200; 
+
+// Pega a largura atual da tela
 const { width } = Dimensions.get('window');
-const scale = size => Math.round(width / 414 * size);
+
+// 2. Função de Escala Responsiva (MANTIDA)
+const useResponsiveScale = () => {
+    const currentBase = Platform.OS === 'web' ? WEB_BASE_WIDTH : MOBILE_BASE_WIDTH;
+    const currentWidth = Dimensions.get('window').width;
+
+    // Retorna uma função de escala
+    return (size) => Math.round((currentWidth / currentBase) * size);
+}
+
+// 3. Aplica a escala: scale agora é uma função mais inteligente
+const scale = useResponsiveScale();
+
 
 export default function Page() {
   return (
@@ -16,34 +34,22 @@ export default function Page() {
 
       <View style={styles.main}>
         {/* Seção da Imagem de Perfil */}
-       <View style={styles.profileImageContainer}>
+        <View style={styles.profileImageContainer}>
           <Image
-            // >>> TROQUE ESTA LINHA <<<
-            source={{ uri: 'Pedro.jpeg' }}
-            // Pelo caminho da sua imagem, por exemplo:
-            // source={require('./assets/minha_foto.png')}
             style={styles.profileImage}
+            source={img}
           />
         </View>
 
         {/* Card com Informações Pessoais */}
         <View style={styles.infoCard}>
           <Text style={styles.cardTitle}>Pedro Henrique</Text>
-          <Text style={styles.cardSubtitle}>Desenvolvedor Full Stack Júnior</Text>
+          <Text style={styles.cardSubtitle}>Tentando ser um desenvolvedor</Text>
           <Text style={styles.cardDescription}>
-            Sou um desenvolvedor apaixonado por criar soluções que fazem a diferença. Este aplicativo é um reflexo do meu compromisso em tornar o ambiente digital mais seguro para todos, especialmente contra o cyberbullying.
+            Eu estou neste curso tentando virar um "desenvolvedor" para conseguir um trabalho bom, este aplicativo é a primeira coisa que eu faço com o intuito de ajudar as pessoas a se previnirem contra o cyberbullying, este é o meu objetivo por enquanto.
+            
             {"\n\n"}
-            Tenho experiência em React Native, Node.js e busco constantemente aprender e aprimorar minhas habilidades. Acredito que a tecnologia pode ser uma ferramenta poderosa para o bem social.
-          </Text>
-        </View>
-
-        {/* Card de Contato (Exemplo) */}
-        <View style={styles.infoCard}>
-          <Text style={styles.cardTitle}>Contato</Text>
-          <Text style={styles.cardDescription}>
-            **Email:** seu.email@exemplo.com {"\n"}
-            **LinkedIn:** [Seu Perfil do LinkedIn](link-do-linkedin) {"\n"}
-            **GitHub:** [Seu Perfil do GitHub](link-do-github)
+            Obrigado por visitar o aplicativo.
           </Text>
         </View>
 
@@ -52,69 +58,74 @@ export default function Page() {
   );
 }
 
+// -------------------------------------------------------------------------
+// ESTILOS (VALORES BASE AJUSTADOS PARA MAIOR PROPORCIONALIDADE)
+// -------------------------------------------------------------------------
+
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#E8EEF4', // Fundo claro e suave
+    backgroundColor: '#E8EEF4', 
   },
   bannerHeader: {
-    backgroundColor: '#3452D3', // Cor de destaque azul
-    paddingVertical: scale(30),
+    backgroundColor: '#3452D3', 
+    paddingVertical: scale(40), // Aumentei o padding vertical do banner
     paddingHorizontal: scale(20),
-    marginBottom: scale(80), // Maior marginBottom para a imagem se sobrepor
+    marginBottom: scale(80), 
     alignItems: 'center',
-    position: 'relative', // Para posicionar a imagem de perfil
+    position: 'relative', 
   },
   bannerTitle: {
-    fontSize: scale(26),
+    fontSize: scale(30), // Fonte um pouco maior
     fontWeight: '800',
     color: 'white',
     textAlign: 'center',
     marginBottom: scale(5),
   },
   bannerSubtitle: {
-    fontSize: scale(16),
+    fontSize: scale(18), 
     color: '#D4E2FF',
     textAlign: 'center',
   },
   main: {
     paddingHorizontal: scale(20),
-    // paddingTop: scale(10), // Removido para a imagem se sobrepor
     paddingBottom: scale(40),
-    maxWidth: 600,
+    // Tamanho máximo ideal para leitura em desktop
+    maxWidth: 650, 
     width: '100%',
     alignSelf: 'center',
-    marginTop: -scale(60), // Ajuste para a imagem de perfil subir e se sobrepor ao banner
+    // Ajustado para a imagem de perfil subir corretamente
+    marginTop: -scale(75), 
   },
   // ESTILOS DA IMAGEM DE PERFIL
   profileImageContainer: {
-    width: scale(140),
-    height: scale(140),
-    borderRadius: scale(70), // Transforma em círculo
-    backgroundColor: '#FFFFFF', // Fundo branco para a borda
+    width: scale(150), 
+    height: scale(150),
+    borderRadius: scale(75), 
+    backgroundColor: '#FFFFFF', 
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center', // Centraliza o círculo
-    marginTop: -scale(7), // Move o círculo para cima, sobrepondo o banner
+    alignSelf: 'center', 
+    marginTop: -scale(7), 
     marginBottom: scale(20),
-    elevation: 8, // Sombra para o círculo
+    elevation: 8, 
     shadowColor: '#1A2940',
     shadowOffset: { width: 0, height: scale(4) },
     shadowOpacity: 0.2,
     shadowRadius: scale(10),
   },
   profileImage: {
-    width: scale(130), // Ligeiramente menor que o container para borda
-    height: scale(130),
-    borderRadius: scale(65), // Metade da largura/altura para círculo
-    borderWidth: scale(3), // Borda da imagem
-    borderColor: '#D4E2FF', // Cor da borda
+    width: scale(140), 
+    height: scale(140),
+    borderRadius: scale(70), 
+    borderWidth: scale(3), 
+    borderColor: '#D4E2FF', 
   },
   // ESTILOS DOS CARDS DE INFORMAÇÃO
   infoCard: {
     backgroundColor: '#FFFFFF',
     borderRadius: scale(15),
-    padding: scale(20),
+    padding: scale(30), // Padding interno maior para "respiro"
     marginBottom: scale(20),
     elevation: 5,
     shadowColor: '#1A2940',
@@ -123,22 +134,22 @@ const styles = StyleSheet.create({
     shadowRadius: scale(10),
   },
   cardTitle: {
-    fontSize: scale(22),
+    fontSize: scale(26), 
     fontWeight: '700',
     color: '#1A2940',
     marginBottom: scale(8),
-    textAlign: 'center', // Centralizado
+    textAlign: 'center', 
   },
   cardSubtitle: {
-    fontSize: scale(16),
+    fontSize: scale(18), 
     color: '#65748F',
     marginBottom: scale(15),
-    textAlign: 'center', // Centralizado
+    textAlign: 'center', 
   },
   cardDescription: {
-    fontSize: scale(15),
+    fontSize: scale(17), 
     color: '#4B5C75',
     textAlign: 'left',
-    lineHeight: scale(22),
+    lineHeight: scale(26), 
   },
 });

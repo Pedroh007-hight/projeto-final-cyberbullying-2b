@@ -1,5 +1,24 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Dimensions, Platform } from "react-native";
+
+// -------------------------------------------------------------------------
+// 1. LÓGICA DE ESCALA RESPONSIVA
+// -------------------------------------------------------------------------
+
+const MOBILE_BASE_WIDTH = 414;
+// Usamos uma base maior (1200) para reduzir o fator de escala na Web (tirar o "zoom").
+const WEB_BASE_WIDTH = 1200; 
+
+// 2. Função de Escala
+const useResponsiveScale = () => {
+    const currentBase = Platform.OS === 'web' ? WEB_BASE_WIDTH : MOBILE_BASE_WIDTH;
+    const currentWidth = Dimensions.get('window').width;
+    return (size) => Math.round((currentWidth / currentBase) * size);
+}
+
+// 3. Aplica a escala
+const scale = useResponsiveScale();
+
 
 // --- Componente de Card Reutilizável (Adaptado) ---
 const InfoCard = ({ icon, title, text }) => {
@@ -12,7 +31,7 @@ const InfoCard = ({ icon, title, text }) => {
           <Text style={styles.titleCard}>{title}</Text>
         </View>
       </View>
-     
+      
       <View style={styles.descriptionSection}>
         <Text style={styles.description}>{text}</Text>
       </View>
@@ -31,7 +50,7 @@ export default function Page() {
       </View>
 
       <View style={styles.main}>
-       
+        
         <InfoCard
           icon={"🎯"}
           title="Objetivo da Missão"
@@ -52,7 +71,7 @@ export default function Page() {
           icon={"🧑‍💻"}
           title="Desenvolvimento "
           text={
-            "Eu Pedro Henrique, desenvolvi este aplicativo com a ajuda do gemini, com o intuito de ajudar as pessoas a entenderem os riscos do cyberbullying e oferecer soluções de prevenção e ação. Se você tiver sugestões ou feedbacks, sinta-se à vontade para entrar em contato. Sua contribuição é valiosa!"
+            "Eu desenvolvi este aplicativo com a ajuda do gemini, com o intuito de ajudar as pessoas a entenderem os riscos do cyberbullying e oferecer soluções de prevenção e ação. Se você tiver sugestões ou feedbacks, sinta-se à vontade para entrar em contato. Sua contribuição é valiosa!"
           }
         />
       </View>
@@ -65,79 +84,79 @@ const styles = StyleSheet.create({
   // CONTAINER PRINCIPAL (Fundo)
   container: {
     flexGrow: 1,
-    backgroundColor: '#E8EEF4', // Fundo claro do design original
+    backgroundColor: '#E8EEF4', 
   },
   // BANNER HEADER (Cabeçalho de Destaque)
   bannerHeader: {
-    backgroundColor: '#3452D3', // Cor de destaque azul
-    paddingVertical: 30,
-    paddingHorizontal: 20,
-    marginBottom: 10,
+    backgroundColor: '#3452D3', 
+    paddingVertical: scale(40), // Aumentado e escalado
+    paddingHorizontal: scale(20),
+    marginBottom: scale(15), // Ajustado e escalado
     alignItems: 'center',
   },
   bannerTitle: {
-    fontSize: 26,
+    fontSize: scale(30), // Aumentado e escalado
     fontWeight: '800',
     color: 'white',
     textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: scale(5),
   },
   bannerSubtitle: {
-    fontSize: 16,
-    color: '#D4E2FF', // Branco suave
+    fontSize: scale(18), // Aumentado e escalado
+    color: '#D4E2FF', 
     textAlign: 'center',
   },
   // CONTEÚDO PRINCIPAL
   main: {
-    paddingHorizontal: 20,
-    paddingTop: 10,
-    paddingBottom: 40,
-    maxWidth: 600,
+    paddingHorizontal: scale(20),
+    paddingTop: scale(10),
+    paddingBottom: scale(40),
+    maxWidth: 700, // Largura máxima para a Web
     width: '100%',
     alignSelf: 'center',
   },
   // TÓPICO - ELEMENTO DE SUBSTITUIÇÃO (Emoji/Ícone)
   topicEmoji: {
-    fontSize: 32,
-    marginRight: 15,
+    fontSize: scale(36), // Aumentado e escalado
+    marginRight: scale(15),
   },
   // ESTILOS DO CARD DO TÓPICO (topicContainer substitui 'card')
   topicContainer: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 15,
-    padding: 20,
-    marginBottom: 20,
+    borderRadius: scale(15),
+    padding: scale(30), // Aumentado e escalado para mais "respiro"
+    marginBottom: scale(20),
     elevation: 5,
-    shadowColor: '#1A2940', // Sombra escura sutil
-    shadowOffset: { width: 0, height: 4 },
+    shadowColor: '#1A2940', 
+    shadowOffset: { width: 0, height: scale(4) },
     shadowOpacity: 0.08,
-    shadowRadius: 10,
+    shadowRadius: scale(10),
   },
   headerContent: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 10,
+    marginBottom: scale(10),
   },
   textHeader: {
     flex: 1,
   },
   // TÍTULO do Card (titleCard substitui cardTitle)
   titleCard: {
-    fontSize: 22,
+    fontSize: scale(24), // Aumentado e escalado
     fontWeight: '700',
     color: '#1A2940',
-    marginBottom: 4,
+    marginBottom: scale(4),
     textAlign: 'left',
   },
   descriptionSection: {
-    paddingLeft: 5,
-    paddingBottom: 5,
+    paddingLeft: scale(5),
+    paddingBottom: scale(5),
   },
   // DESCRIÇÃO (description substitui cardText)
   description: {
-    fontSize: 15,
+    fontSize: scale(17), // Aumentado e escalado
     color: '#4B5C75',
     textAlign: 'left',
-    lineHeight: 22,
+    lineHeight: scale(26), // Aumentado para melhor leitura
   },
 });

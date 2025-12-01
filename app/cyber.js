@@ -1,8 +1,27 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions, Platform } from "react-native";
 // A importação 'Image' foi removida.
 
-// --- Componente Topic Atualizado (Com Emoji de Substituição) ---
+// -------------------------------------------------------------------------
+// 1. LÓGICA DE ESCALA RESPONSIVA
+// -------------------------------------------------------------------------
+
+const MOBILE_BASE_WIDTH = 414;
+// Base maior (1200) para reduzir o fator de escala (tirar o "zoom") na Web.
+const WEB_BASE_WIDTH = 1200; 
+
+// 2. Função de Escala
+const useResponsiveScale = () => {
+    const currentBase = Platform.OS === 'web' ? WEB_BASE_WIDTH : MOBILE_BASE_WIDTH;
+    const currentWidth = Dimensions.get('window').width;
+    return (size) => Math.round((currentWidth / currentBase) * size);
+}
+
+// 3. Aplica a escala
+const scale = useResponsiveScale();
+
+
+// --- Componente Topic Atualizado (Com Emoji de Substituição e 'scale') ---
 const Topic = ({ title, subtitle, description, expandedDescription, emoji }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -17,10 +36,10 @@ const Topic = ({ title, subtitle, description, expandedDescription, emoji }) => 
         <Text style={styles.topicEmoji}>{emoji}</Text>
         <View style={styles.textHeader}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subtitle}>{subtitle}</Text>
+        <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-     
+      
       <View style={styles.descriptionSection}>
         <Text style={styles.description}>
           {description}
@@ -39,8 +58,6 @@ const Topic = ({ title, subtitle, description, expandedDescription, emoji }) => 
 
 // --- Componente Principal Page Atualizado ---
 export default function Page() {
-  // As constantes de imagem foram removidas.
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* O banner de imagem foi substituído por um título/cabeçalho visual */}
@@ -50,7 +67,7 @@ export default function Page() {
       </View>
 
       <View style={styles.main}>
-       
+        
         <Topic
           title="O Que é Cyberbullying?"
           subtitle="Identifique as formas de assédio online."
@@ -91,7 +108,10 @@ export default function Page() {
   );
 }
 
-// --- Estilos de Design Adaptados (Removendo estilos de imagem) ---
+// -------------------------------------------------------------------------
+// ESTILOS COM APLICAÇÃO DA ESCALA
+// -------------------------------------------------------------------------
+
 const styles = StyleSheet.create({
   // CONTAINER PRINCIPAL (Fundo)
   container: {
@@ -100,97 +120,97 @@ const styles = StyleSheet.create({
   },
   // BANNER HEADER (Substituindo a imagem de banner)
   bannerHeader: {
-    backgroundColor: '#3452D3', // Cor de destaque do botão
-    paddingVertical: 30,
-    paddingHorizontal: 20,
-    marginBottom: 10,
+    backgroundColor: '#3452D3',
+    paddingVertical: scale(40), // Escalado
+    paddingHorizontal: scale(20),
+    marginBottom: scale(15), // Escalado
     alignItems: 'center',
   },
   bannerTitle: {
-    fontSize: 26,
+    fontSize: scale(30), // Escalado
     fontWeight: '800',
     color: 'white',
     textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: scale(5),
   },
   bannerSubtitle: {
-    fontSize: 16,
+    fontSize: scale(18), // Escalado
     color: '#D4E2FF',
     textAlign: 'center',
   },
   // CONTEÚDO PRINCIPAL
   main: {
-    paddingHorizontal: 20,
-    paddingTop: 10,
-    paddingBottom: 40,
-    maxWidth: 600,
+    paddingHorizontal: scale(20),
+    paddingTop: scale(10),
+    paddingBottom: scale(40),
+    maxWidth: 700, // Largura máxima para a Web
     width: '100%',
     alignSelf: 'center',
   },
   // TÓPICO - ELEMENTO DE SUBSTITUIÇÃO
   topicEmoji: {
-    fontSize: 32, // Tamanho do emoji
-    marginRight: 15,
+    fontSize: scale(36), // Escalado
+    marginRight: scale(15),
   },
   // ESTILOS DO CARD DO TÓPICO
   topicContainer: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 15,
-    padding: 20,
-    marginBottom: 20,
+    borderRadius: scale(15),
+    padding: scale(30), // Escalado
+    marginBottom: scale(20),
     elevation: 5,
     shadowColor: '#1A2940',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: scale(4) },
     shadowOpacity: 0.08,
-    shadowRadius: 10,
+    shadowRadius: scale(10),
   },
   headerContent: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 10,
+    marginBottom: scale(10),
   },
   textHeader: {
     flex: 1,
   },
   title: {
-    fontSize: 22,
+    fontSize: scale(24), // Escalado
     fontWeight: '700',
     color: '#1A2940',
-    marginBottom: 4,
+    marginBottom: scale(4),
     textAlign: 'left',
   },
   subtitle: {
-    fontSize: 15,
+    fontSize: scale(17), // Escalado
     color: '#65748F',
     textAlign: 'left',
-    marginBottom: 5,
+    marginBottom: scale(5),
   },
   descriptionSection: {
-    paddingLeft: 5,
-    paddingBottom: 15,
+    paddingLeft: scale(5),
+    paddingBottom: scale(15),
   },
   description: {
-    fontSize: 15,
+    fontSize: scale(17), // Escalado
     color: '#4B5C75',
     textAlign: 'left',
-    lineHeight: 22,
+    lineHeight: scale(26), // Escalado
   },
   // ESTILOS DO BOTÃO
   toggleButton: {
-    marginTop: 10,
+    marginTop: scale(10),
     alignSelf: 'flex-start',
     backgroundColor: '#3452D3',
-    paddingVertical: 10,
-    paddingHorizontal: 25,
-    borderRadius: 8,
+    paddingVertical: scale(10),
+    paddingHorizontal: scale(25),
+    borderRadius: scale(8),
     shadowColor: '#3452D3',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: scale(2) },
     shadowOpacity: 0.3,
-    shadowRadius: 4,
+    shadowRadius: scale(4),
   },
   toggleButtonText: {
     color: 'white',
-    fontSize: 15,
+    fontSize: scale(16), // Escalado
     fontWeight: '600',
     textTransform: 'uppercase',
   },
