@@ -7,7 +7,7 @@ import { StyleSheet, Text, View, ScrollView, Dimensions, Platform } from "react-
 
 const MOBILE_BASE_WIDTH = 414;
 // Usamos uma base maior (1200) para reduzir o fator de escala na Web (tirar o "zoom").
-const WEB_BASE_WIDTH = 1200; 
+const WEB_BASE_WIDTH = 1200;
 
 // 2. Função de Escala
 const useResponsiveScale = () => {
@@ -31,7 +31,7 @@ const InfoCard = ({ icon, title, text }) => {
           <Text style={styles.titleCard}>{title}</Text>
         </View>
       </View>
-      
+     
       <View style={styles.descriptionSection}>
         <Text style={styles.description}>{text}</Text>
       </View>
@@ -50,7 +50,7 @@ export default function Page() {
       </View>
 
       <View style={styles.main}>
-        
+       
         <InfoCard
           icon={"🎯"}
           title="Objetivo da Missão"
@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
   // CONTAINER PRINCIPAL (Fundo)
   container: {
     flexGrow: 1,
-    backgroundColor: '#E8EEF4', 
+    backgroundColor: '#E8EEF4',
   },
   // BANNER HEADER (Cabeçalho de Destaque)
   bannerHeader: {
-    backgroundColor: '#3452D3', 
+    backgroundColor: '#3452D3',
     paddingVertical: scale(40), // Aumentado e escalado
     paddingHorizontal: scale(20),
     marginBottom: scale(15), // Ajustado e escalado
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   },
   bannerSubtitle: {
     fontSize: scale(18), // Aumentado e escalado
-    color: '#D4E2FF', 
+    color: '#D4E2FF',
     textAlign: 'center',
   },
   // CONTEÚDO PRINCIPAL
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     padding: scale(30), // Aumentado e escalado para mais "respiro"
     marginBottom: scale(20),
     elevation: 5,
-    shadowColor: '#1A2940', 
+    shadowColor: '#1A2940',
     shadowOffset: { width: 0, height: scale(4) },
     shadowOpacity: 0.08,
     shadowRadius: scale(10),

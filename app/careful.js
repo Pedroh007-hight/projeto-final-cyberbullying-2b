@@ -7,7 +7,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions, Platf
 
 const MOBILE_BASE_WIDTH = 414;
 // Base maior (1200) para reduzir o fator de escala (tirar o "zoom") na Web.
-const WEB_BASE_WIDTH = 1200; 
+const WEB_BASE_WIDTH = 1200;
 
 // 2. Função de Escala
 const useResponsiveScale = () => {
@@ -38,7 +38,7 @@ const Topic = ({ title, subtitle, description, expandedContent, emoji }) => {
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-      
+     
       <View style={styles.descriptionSection}>
         <Text style={styles.description}>
           {description}
@@ -119,11 +119,11 @@ const styles = StyleSheet.create({
   // CONTAINER PRINCIPAL (Fundo)
   container: {
     flexGrow: 1,
-    backgroundColor: '#E8EEF4', 
+    backgroundColor: '#E8EEF4',
   },
   // BANNER HEADER (Cabeçalho de Destaque)
   bannerHeader: {
-    backgroundColor: '#3452D3', 
+    backgroundColor: '#3452D3',
     paddingVertical: scale(40), // Escalado
     paddingHorizontal: scale(20),
     marginBottom: scale(15), // Escalado
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   bannerSubtitle: {
     fontSize: scale(18), // Escalado
-    color: '#D4E2FF', 
+    color: '#D4E2FF',
     textAlign: 'center',
   },
   // CONTEÚDO PRINCIPAL
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     padding: scale(30), // Escalado
     marginBottom: scale(20),
     elevation: 5,
-    shadowColor: '#1A2940', 
+    shadowColor: '#1A2940',
     shadowOffset: { width: 0, height: scale(4) },
     shadowOpacity: 0.08,
     shadowRadius: scale(10),
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   textHeader: {
     flex: 1,
   },
-  // TÍTULO 
+  // TÍTULO
   title: {
     fontSize: scale(24), // Escalado
     fontWeight: '700',
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3452D3',
     paddingVertical: scale(10),
     paddingHorizontal: scale(25),
-    borderRadius: scale(8), 
+    borderRadius: scale(8),
     shadowColor: '#3452D3',
     shadowOffset: { width: 0, height: scale(2) },
     shadowOpacity: 0.3,
@@ -218,6 +218,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: scale(16), // Escalado
     fontWeight: '600',
-    textTransform: 'uppercase', 
+    textTransform: 'uppercase',
   },
 });

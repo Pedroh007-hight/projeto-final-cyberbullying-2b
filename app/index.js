@@ -7,7 +7,7 @@ import { StyleSheet, Text, View, ScrollView, Dimensions, Platform } from "react-
 
 const MOBILE_BASE_WIDTH = 414;
 // Base maior (1200) para reduzir o fator de escala (tirar o "zoom") na Web.
-const WEB_BASE_WIDTH = 1200; 
+const WEB_BASE_WIDTH = 1200;
 
 // 2. Função de Escala
 const useResponsiveScale = () => {
@@ -24,7 +24,7 @@ export default function Page() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.main}>
-        
+       
         {/* Ícone de Destaque */}
         <Text style={styles.heroIcon}>🛡️</Text>
 
@@ -50,10 +50,6 @@ export default function Page() {
   );
 }
 
-// -------------------------------------------------------------------------
-// ESTILOS COM APLICAÇÃO DA ESCALA
-// -------------------------------------------------------------------------
-
 const styles = StyleSheet.create({
   // CONTAINER PRINCIPAL (Fundo)
   container: {
@@ -67,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     // Largura máxima para a Web
-    maxWidth: 700, 
+    maxWidth: 700,
     paddingHorizontal: scale(20),
   },
   // ÍCONE HERO
@@ -83,13 +79,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: scale(36), // Escalado
     fontWeight: '800',
-    color: '#1A2940', 
+    color: '#1A2940',
     marginBottom: scale(15),
     textAlign: 'center',
   },
   subtitle: {
     fontSize: scale(20), // Escalado
-    color: '#65748F', 
+    color: '#65748F',
     textAlign: 'center',
     marginBottom: scale(30),
   },

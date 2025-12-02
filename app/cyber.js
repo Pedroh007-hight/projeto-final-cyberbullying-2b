@@ -8,7 +8,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions, Platf
 
 const MOBILE_BASE_WIDTH = 414;
 // Base maior (1200) para reduzir o fator de escala (tirar o "zoom") na Web.
-const WEB_BASE_WIDTH = 1200; 
+const WEB_BASE_WIDTH = 1200;
 
 // 2. Função de Escala
 const useResponsiveScale = () => {
@@ -39,7 +39,7 @@ const Topic = ({ title, subtitle, description, expandedDescription, emoji }) => 
         <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-      
+     
       <View style={styles.descriptionSection}>
         <Text style={styles.description}>
           {description}
@@ -67,7 +67,7 @@ export default function Page() {
       </View>
 
       <View style={styles.main}>
-        
+       
         <Topic
           title="O Que é Cyberbullying?"
           subtitle="Identifique as formas de assédio online."
