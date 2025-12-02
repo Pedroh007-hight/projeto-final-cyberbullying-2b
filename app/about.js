@@ -71,7 +71,7 @@ export default function Page() {
           icon={"🧑‍💻"}
           title="Desenvolvimento "
           text={
-            "Eu desenvolvi este aplicativo com a ajuda do gemini, com o intuito de ajudar as pessoas a entenderem os riscos do cyberbullying e oferecer soluções de prevenção e ação. Se você tiver sugestões ou feedbacks, sinta-se à vontade para entrar em contato. Sua contribuição é valiosa!"
+            "Eu desenvolvi este aplicativo com o intuito de ajudar as pessoas a entenderem os riscos do cyberbullying e oferecer soluções de prevenção e ação. Se você tiver sugestões ou feedbacks, sinta-se à vontade para entrar em contato. Sua contribuição é valiosa!"
           }
         />
       </View>
